@@ -1,0 +1,500 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * Keep every @import in this top block. Remote fonts load via <link> in src/routes/__root.tsx.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Royal Gold brand tokens */
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-amber: var(--amber);
+  --color-charcoal: var(--charcoal);
+  --color-navy: var(--navy);
+  --color-ink: var(--ink);
+  --color-line: var(--line);
+  --color-line-gold: var(--line-gold);
+
+  /* Green frosted glass tokens (service popups only) */
+  --color-glass: var(--glass);
+  --color-glass-foreground: var(--glass-foreground);
+  --color-glass-muted: var(--glass-muted);
+  --color-glass-accent: var(--glass-accent);
+  --color-glass-line: var(--glass-line);
+  --color-glass-chip: var(--glass-chip);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --ink: oklch(0.12 0.008 265);
+  --charcoal: oklch(0.19 0.01 265);
+  --navy: oklch(0.21 0.04 262);
+  --gold: oklch(0.78 0.1 82);
+  --gold-soft: oklch(0.86 0.07 85);
+  --amber: oklch(0.72 0.12 65);
+  --line: oklch(1 0 0 / 8%);
+  --line-gold: oklch(0.78 0.1 82 / 28%);
+
+  --background: oklch(0.135 0.012 262);
+  --foreground: oklch(0.95 0.012 85);
+  --card: oklch(0.175 0.014 262);
+  --card-foreground: oklch(0.95 0.012 85);
+  --popover: oklch(0.175 0.014 262);
+  --popover-foreground: oklch(0.95 0.012 85);
+  --primary: var(--gold);
+  --primary-foreground: oklch(0.15 0.01 262);
+  --secondary: oklch(0.22 0.03 262);
+  --secondary-foreground: oklch(0.95 0.012 85);
+  --muted: oklch(0.2 0.014 262);
+  --muted-foreground: oklch(0.74 0.018 80);
+  --accent: oklch(0.24 0.03 262);
+  --accent-foreground: var(--gold-soft);
+  --destructive: oklch(0.66 0.19 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: var(--line);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.78 0.1 82 / 60%);
+
+  --glass: oklch(0.42 0.08 158 / 34%);
+  --glass-foreground: oklch(0.97 0.02 150);
+  --glass-muted: oklch(0.88 0.035 150);
+  --glass-accent: oklch(0.84 0.14 155);
+  --glass-line: oklch(0.88 0.1 155 / 30%);
+  --glass-chip: oklch(0.8 0.12 155 / 14%);
+
+  --gradient-gold: linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--amber));
+  --gradient-panel: linear-gradient(160deg, oklch(0.2 0.018 262), oklch(0.15 0.012 262));
+  --shadow-gold: 0 18px 40px -22px oklch(0.78 0.1 82 / 45%);
+  --shadow-panel: 0 24px 60px -30px oklch(0 0 0 / 80%);
+
+  --chart-1: var(--gold);
+  --chart-2: var(--amber);
+  --chart-3: oklch(0.6 0.05 262);
+  --chart-4: oklch(0.5 0.04 262);
+  --chart-5: oklch(0.4 0.03 262);
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: oklch(0.78 0.1 82 / 35%);
+    color: var(--foreground);
+  }
+}
+
+/* ---------- Brand utilities ---------- */
+@utility text-gold-gradient {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+@utility gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+
+@utility panel {
+  background: var(--gradient-panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility panel-hover {
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--line-gold);
+    box-shadow: var(--shadow-panel), var(--shadow-gold);
+  }
+}
+
+@utility page-glow {
+  background:
+    radial-gradient(60% 50% at 85% 0%, oklch(0.78 0.1 82 / 7%), transparent 70%),
+    radial-gradient(50% 40% at 0% 20%, oklch(0.3 0.06 262 / 45%), transparent 70%);
+}
+
+/* ---------- Green frosted glass (service popups) ---------- */
+@utility glass-green {
+  background:
+    radial-gradient(120% 80% at 0% 0%, oklch(0.75 0.14 155 / 22%), transparent 60%),
+    radial-gradient(90% 70% at 100% 100%, oklch(0.55 0.1 170 / 25%), transparent 60%),
+    var(--glass);
+  border: 1px solid var(--glass-line);
+  backdrop-filter: blur(22px) saturate(150%);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 18%),
+    0 30px 80px -20px oklch(0.2 0.08 160 / 60%);
+  color: var(--glass-foreground);
+}
+
+@utility glass-overlay {
+  background: oklch(0.12 0.03 170 / 55%);
+  backdrop-filter: blur(6px);
+}
+
+/* ---------- Home hero: mirror fragments ---------- */
+/* Long dark rests, a slow swell, a slow fade: each glint lives ~15% of its cycle. */
+@keyframes shard-glint {
+  0%,
+  42%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: var(--glint-peak, 0.3);
+  }
+  54% {
+    opacity: calc(var(--glint-peak, 0.3) * 0.75);
+  }
+  60% {
+    opacity: 0;
+  }
+}
+
+/* Soft, diffuse glow: appears, gently brightens, then slowly fades. No flash. */
+@keyframes spark-glint {
+  0%,
+  44%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  51% {
+    opacity: calc(var(--glint-peak, 0.35) * 0.6);
+    transform: scale(0.95);
+  }
+  54% {
+    opacity: var(--glint-peak, 0.35);
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes edge-glint {
+  0%,
+  100% {
+    stroke-opacity: 0.04;
+  }
+  50% {
+    stroke-opacity: 0.4;
+  }
+}
+
+.shard-glint {
+  opacity: 0;
+  animation: shard-glint var(--glint-dur, 22s) cubic-bezier(0.45, 0, 0.25, 1)
+    var(--glint-delay, 0s) infinite;
+}
+.spark-glint {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spark-glint var(--glint-dur, 18s) cubic-bezier(0.45, 0, 0.25, 1)
+    var(--glint-delay, 0s) infinite;
+}
+.edge-glint {
+  animation: edge-glint var(--glint-dur, 26s) ease-in-out var(--glint-delay, 0s) infinite;
+}
+
+/* Golden light band drifting across the hero (moves in SVG user units). */
+@keyframes light-flow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(2700px);
+  }
+}
+.light-flow {
+  animation: light-flow var(--flow-dur, 16s) cubic-bezier(0.45, 0, 0.55, 1) var(--flow-delay, 0s)
+    infinite;
+  will-change: transform;
+}
+
+/* ---------- Inner pages: header entrance + soft shimmer on the gold word ---------- */
+@keyframes header-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes gold-shimmer {
+  0%,
+  70% {
+    background-position: 130% 0, 0 0;
+  }
+  100% {
+    background-position: -30% 0, 0 0;
+  }
+}
+.header-rise {
+  animation: header-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--rise-i, 0) * 0.12s);
+}
+.page-header-title .text-gold-gradient {
+  background:
+    linear-gradient(105deg, transparent 40%, oklch(0.97 0.04 90 / 55%) 50%, transparent 60%),
+    var(--gradient-gold);
+  background-size: 250% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gold-shimmer 7s ease-in-out 1.2s infinite;
+}
+
+/* ---------- Services: card hover ---------- */
+@utility service-card {
+  position: relative;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 1.5rem auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+  & .service-card-icon {
+    transition:
+      background-color 0.45s ease,
+      border-color 0.45s ease,
+      box-shadow 0.45s ease;
+  }
+  & .service-card-number {
+    transition: color 0.45s ease;
+  }
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-5px);
+    border-color: var(--line-gold);
+    box-shadow: var(--shadow-panel), var(--shadow-gold);
+  }
+  &:hover::before,
+  &:focus-visible::before {
+    opacity: 0.7;
+  }
+  &:hover .service-card-icon,
+  &:focus-visible .service-card-icon {
+    border-color: var(--gold);
+    background-color: oklch(0.78 0.1 82 / 10%);
+    box-shadow: 0 0 24px -8px oklch(0.78 0.1 82 / 45%);
+  }
+  &:hover .service-card-number,
+  &:focus-visible .service-card-number {
+    color: var(--gold);
+  }
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+/* ---------- Services: green glass popup motion ---------- */
+@keyframes glass-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes glass-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes glass-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.965);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes glass-pop-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.975);
+  }
+}
+@keyframes glass-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.glass-overlay-motion[data-state="open"] {
+  animation: glass-overlay-in 0.35s ease-out both;
+}
+.glass-overlay-motion[data-state="closed"] {
+  animation: glass-overlay-out 0.25s ease-in both;
+}
+.glass-pop-motion[data-state="open"] {
+  animation: glass-pop-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.glass-pop-motion[data-state="closed"] {
+  animation: glass-pop-out 0.22s ease-in both;
+}
+.glass-pop-motion[data-state="open"] .glass-rise {
+  animation: glass-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.08s + var(--rise-i, 0) * 0.06s);
+}
+
+/* ---------- Gentle fade-in on scroll (Home sections, About, Services, Projects, Contact) ---------- */
+[data-reveal] {
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--reveal-i, 0) * 90ms);
+}
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    transition: none;
+  }
+  .panel-hover,
+  .panel-hover:hover {
+    transition: none;
+    transform: none;
+  }
+  .shard-glint,
+  .spark-glint,
+  .edge-glint,
+  .light-flow,
+  .header-rise,
+  .page-header-title .text-gold-gradient,
+  .glass-pop-motion .glass-rise {
+    animation: none;
+  }
+  .glass-overlay-motion[data-state],
+  .glass-pop-motion[data-state] {
+    animation-duration: 1ms;
+  }
+  .service-card,
+  .service-card::before,
+  .service-card .service-card-icon {
+    transition: none;
+  }
+  .service-card:hover,
+  .service-card:focus-visible,
+  .service-card:active {
+    transform: none;
+  }
+}
